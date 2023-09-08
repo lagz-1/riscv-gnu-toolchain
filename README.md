@@ -13,6 +13,13 @@
   The images after downloading and extracting is as follows.
 	![](https://res.cloudinary.com/dogmynjzd/image/upload/v1694146186/Screenshot_from_2023-09-08_11-16-42_f8dbqd.png)
 
+ Use the command
+ 
+ ```shell
+ sudo apt-get update
+```
+to update system package list
+
   Use the command 
   ```shell
   riscv32-unknown-elf-gcc -v
@@ -76,14 +83,18 @@ close ~/.bashrc , and input `source ~/.bashrc` in the terminal to apply your set
 
   ```shell
    sudo apt-get install libglib2.0-dev ninja-build  build-essential zlib1g-dev pkg-config libglib2.0-dev  \ binutils-dev libboost-all-dev autoconf libtool libssl-dev  libpixman-1-dev libpython-dev  \ virtualenv libmount-dev   libpixman-1-dev   
-
   cd ./qemu  
   mkdir build  
   cd build  
  ```
 
+- Check your Dependencies' version
+ use command:
 
-
+ ```
+ re2c --version
+ ninja --version
+ 
 
 
 
