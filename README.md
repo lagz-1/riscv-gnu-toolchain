@@ -91,83 +91,83 @@ close ~/.bashrc , and input `source ~/.bashrc` in the terminal to apply your set
   cd build  
  ```
 
-- Check your Dependencies' version
- use command:
+- Check your Dependencies' version  
+ use command:  
 
   ```
-  re2c --version
-  ninja --version
+  re2c --version  
+  ninja --version  
   ```
 
-to check the version of the above software
+to check the version of the above software  
 
-If there is no output from the command line, download both software.Otherwise, the following error message is displayed:
+If there is no output from the command line, download both software.Otherwise, the following error message is displayed:  
 
   ```
-  ERROR: Cannot find Ninja
+  ERROR: Cannot find Ninja  
   ```  
 
 [
-Ps:If you choose to install ninja manually, please move the executable file of ninja to one of the executable file paths of the system so that you can access it globally in the terminal.  Common executable paths include */usr/local/bin* or */usr/bin*. Use the command:
+Ps:If you choose to install ninja manually, please move the executable file of ninja to one of the executable file paths of the system so that you can access it globally in the terminal.  Common executable paths include */usr/local/bin* or */usr/bin*. Use the command:  
 
  ```
- sudo mv ninja /usr/local/bin/ 
+ sudo mv ninja /usr/local/bin/  
  ```
 
 or
 
  ```
- sudo mv ninja /usr/bin/ 
+ sudo mv ninja /usr/bin/   
  ```
 
-then
+then  
 
  ```
- ninja --version
+ ninja --version  
  ```
 ]
 
-- Begin to configure
-Use this command:
+- Begin to configure  
+Use this command:  
 
  ```
- ../configure
+ ../configure  
  ```
 
-then waiiiiiiiiiiiiiiiiiiiiting...
+then waiiiiiiiiiiiiiiiiiiiiting...  
 ***
 
-You may encounter many problems during the process,I list some i encountered below:
-[
+You may encounter many problems during the process,I list some i encountered below:  
+[  
  Q:**ERROR: pkg-config binary 'pkg-config' not found**  
- A:This error message indicates that a binary file called PGg-config, which is commonly used to find and get information about dependent libraries when configuring and building software, is not found on your system. To solve this problem, you can install pkg-config by following one of the following steps:
+ A:This error message indicates that a binary file called PGg-config, which is commonly used to find and get information about dependent libraries when configuring and building software, is not found on your system. To solve this problem, you can install pkg-config by following one of the following steps:  
 
   ```
-  sudo apt-get install pkg-config
+  sudo apt-get install pkg-config  
   ```
 
-or you can install it manually:
+or you can install it manually:  
 
  its official website: [https://pkgconfig.freedesktop.org/releases/](https://pkgconfig.freedesktop.org/releases/)
 
- you can download its newest version:
+ you can download its newest version:  
 
  ```
  wget https://pkg-config.freedesktop.org/releases/pkg-config-0.29.2.tar.gz  
- #into the folder
- cd pkg-config-0.29.2
- #use these commands
- ./configure
- make
- make check
- #if failed to run, change into 'sudo make install'
- make install
+ #into the folder  
+ cd pkg-config-0.29.2  
+ #use these commands  
+ ./configure  
+ make  
+ make check  
+ #if failed to run, change into 'sudo make install'  
+ make install  
  ```
  
 finally,use this command to check your the pkg-config's version  
 
  ```
- pkg-config --version
+ pkg-config --version  
  ```
 
 
@@ -181,7 +181,7 @@ Search:
   sudo find / -name "glib-2.0.pc" 2>/dev/null  
  ```
 
-This will search the system for the glib-2.0.pc file and list its path. Once you find the path to the glib-2.0.pc file, you can add it to the PKG_CONFIG_PATH environment variable. Assuming that the found path is /path/to/glib-2.0-pc, use the following command to add it to the environment variable:
+This will search the system for the glib-2.0.pc file and list its path. Once you find the path to the glib-2.0.pc file, you can add it to the PKG_CONFIG_PATH environment variable. Assuming that the found path is /path/to/glib-2.0-pc, use the following command to add it to the environment variable:  
 
  ```
  vim ~/.bashrc  
@@ -189,7 +189,7 @@ This will search the system for the glib-2.0.pc file and list its path. Once you
  source ~/.bashrc  
  ```
 
-Then, run the pkg-config command again:
+Then, run the pkg-config command again:  
 
  ```
  pkg-config --modversion glib-2.0  
@@ -200,46 +200,46 @@ A:This error message indicates that the. /configure script cannot find the requi
  You can use this command to download:  
 
   ```
- sudo apt-get install pkg-config libglib2.0-dev
+ sudo apt-get install pkg-config libglib2.0-dev  
  ```
 
 or you can change the command `./configure` into  
 
  ```
- ./configure --with-internal-glib
+ ./configure --with-internal-glib  
  ```
 
-Q:**ERROR: glib-2.56 gthread-2.0 is required to compile QEMU**
+Q:**ERROR: glib-2.56 gthread-2.0 is required to compile QEMU**  
 A:This problem is divided into two situations.  
 
 - Your versions of GLib and GThread are too old  
  Use these commands:  
   
  ```
- pkg-config --modversion glib-2.0
+ pkg-config --modversion glib-2.0  
  pkg-config --modversion gthread-2.0  #Use this command to check the version  
- sudo apt-get install libglib2.0-dev  #If the version is lower than needed, download
+ sudo apt-get install libglib2.0-dev  #If the version is lower than needed, download  
  ```
 
 - Clear files downloaded in the folder 'build' when the previous configurator was running  
   When using the. /configure directive, it might download some configuration files.  When an error occurs, the configuration process terminates.  When we troubleshoot the error and configure again, the downloaded files may block the program and report this error.So delete those files in folder 'build'.  
 
 - Other situation  
-  If you upgrade GLib, but still encounter problems, you may need to update the library path so that the compiler can find the new version of GLib. You can use the following command to update the library cache:
+  If you upgrade GLib, but still encounter problems, you may need to update the library path so that the compiler can find the new version of GLib. You can use the following command to update the library cache:  
  
  ```
- sudo ldconfig
+ sudo ldconfig  
  ```
-]
+]  
 
-After the configuration is complete,Use these commands:
+After the configuration is complete,Use these commands:  
 
  ```
- make -j4   #and wait
- sudo make install
+ make -j4   #and wait  
+ sudo make install  
 ```
 
-During this process, your disk space may be insufficient, the error is as follows:
+During this process, your disk space may be insufficient, the error is as follows:  
 
  ```
  /usr/bin/ld: final link failed: No space left on device  
@@ -251,26 +251,26 @@ During this process, your disk space may be insufficient, the error is as follow
  make: *** [Makefile:162: run-ninja] Error 1  
  ```
 
-expand your disk or clean up some files
+expand your disk or clean up some files  
 
-If 'sudo make install' is completed, it means that your qemu installation is successful.
+If 'sudo make install' is completed, it means that your qemu installation is successful.  
 
 
-## 4.Test
+## 4.Test  
  Now we can create a C language file to test the effect.  
  In another location, create a folder for storing your code.  
- Then, create a 'helloworld.c' file and use the
+ Then, create a 'helloworld.c' file and use the command  
 
  ```
- riscv32-unknown-elf-gcc helloworld.c -o helloworld
+ riscv32-unknown-elf-gcc helloworld.c -o helloworld  
  ```
 
- command to compile it.
+ to compile it.  
 
-Then ue the command:
+Then ue the command:  
 
  ```
- ./qemu-riscv32 helloworld
+ ./qemu-riscv32 helloworld  
  ```
  to run it.
 ![](https://res.cloudinary.com/dogmynjzd/image/upload/v1694146185/Screenshot_from_2023-09-07_23-27-38_swwx5v.png)
