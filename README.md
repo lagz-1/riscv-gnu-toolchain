@@ -4,7 +4,7 @@
 
 ***
 
-## 1. Download the file riscv-gnu-toolchain.tar.gz to your ubuntu
+## 1. Download the file to your ubuntu
   I have provided the download link for the file below, so you don't have to pull the mirror from GitHub (which can be subject to your internet speed and sometimes fail to fetch). 
   Once you download and unzip it on your Ubuntu, you can proceed with the *configuration* (../configure) and *compilation* (make) directly.
 
@@ -296,3 +296,14 @@ Open the folder where the helloworld file is located and run it directly:
 
 ![](https://res.cloudinary.com/dogmynjzd/image/upload/v1694146186/Screenshot_from_2023-09-08_00-00-30_qrhkiu.png)
 
+if it messages **"bash: ./helloworld: cannot execute binary file: Exec format error"** ,try 
+
+ ```
+ sudo dpkg --add-architecture i386
+ sudo apt-get update
+ sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
+ ```
+
+and re-run.
+
+## If you can see 'hello world!', it means that you have successfully configured it.Congratulations!
