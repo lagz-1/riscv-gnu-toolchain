@@ -30,10 +30,12 @@ gawk build-essential bison flex texinfo gperf libtool patchutils bc zlib1g-dev l
 
 - add environment variables: `vim ~/.bashrc`
   Then add these lines:
+
 ```vim
 export RISCV="/path/to/your/riscv-gnu-toolchain unzip folder"
 export PATH=$PATH:$RISCV/bin
 ```
+
   close ~/.bashrc , and input `source ~/.bashrc` in the terminal to apply your settings.
 
 - Then create a folder named 'build',
