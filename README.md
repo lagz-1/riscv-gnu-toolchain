@@ -70,5 +70,23 @@ close ~/.bashrc , and input `source ~/.bashrc` in the terminal to apply your set
    make install
    ```
 
-  
+## 3.Configure QEMU
+
+- Download Dependencies
+
+  ```shell
+   sudo apt-get install libglib2.0-dev ninja-build  build-essential zlib1g-dev pkg-config libglib2.0-dev  \
+binutils-dev libboost-all-dev autoconf libtool libssl-dev  libpixman-1-dev libpython-dev  \
+ virtualenv libmount-dev   libpixman-1-dev  
+ cd ./qemu  
+mkdir build  
+cd build  
+```
+
+
+
+
+
+
+"Now we can create a C language file to test the effect. In another location, create a folder for storing your code. Then, create a 'helloworld.c' file and use the 'kk' command to compile it.
   
