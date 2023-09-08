@@ -89,7 +89,7 @@ close ~/.bashrc , and input `source ~/.bashrc` in the terminal to apply your set
   cd ./qemu  
   mkdir build  
   cd build  
- ```
+  ```
 
 - Check your Dependencies' version  
  use command:  
