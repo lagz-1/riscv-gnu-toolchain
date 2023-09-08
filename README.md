@@ -56,7 +56,7 @@ close ~/.bashrc , and input `source ~/.bashrc` in the terminal to apply your set
 
 - Then use command:
   ```shell
-  make -j4      
+  make -j4
  ``` 
   you also should be patient
 
@@ -66,7 +66,7 @@ close ~/.bashrc , and input `source ~/.bashrc` in the terminal to apply your set
  - Then use command:
    ```shell
    make install
-```
+ ```
 
   
   
