@@ -31,7 +31,7 @@
 - add environment variables: `vim ~/.bashrc`
   Then add these lines:  
   
-  ```vim
+  ```bash
 export RISCV="/path/to/your/riscv-gnu-toolchain unzip folder"
 export PATH=$PATH:$RISCV/bin
   ```
