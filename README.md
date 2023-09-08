@@ -186,8 +186,9 @@ Search:
 This will search the system for the glib-2.0.pc file and list its path. Once you find the path to the glib-2.0.pc file, you can add it to the PKG_CONFIG_PATH environment variable. Assuming that the found path is /path/to/glib-2.0-pc, use the following command to add it to the environment variable:  
 
  ```vim
- vim ~/.bashrc  
- export PKG_CONFIG_PATH=/path/to/glib-2.0-pc:$PKG_CONFIG_PATH #add this line  
+ vim ~/.bashrc
+ #add this line  
+ export PKG_CONFIG_PATH=/path/to/glib-2.0-pc:$PKG_CONFIG_PATH     
  source ~/.bashrc  
  ```
 
@@ -263,7 +264,7 @@ If 'sudo make install' is completed, it means that your qemu installation is suc
  In another location, create a folder for storing your code.  
  Then, create a 'helloworld.c' file and use the command  
 
- ```
+ ```shell
  riscv32-unknown-elf-gcc helloworld.c -o helloworld  
  ```
 
@@ -271,7 +272,7 @@ If 'sudo make install' is completed, it means that your qemu installation is suc
 
 Then ue the command:  
 
- ```
+ ```shell
  ./qemu-riscv32 helloworld  
  ```
  to run it.
@@ -286,7 +287,7 @@ To streamline this process, we can add 'qemu-riscv32' to the environment variabl
  export PATH=$PATH:$RISCV/bin:$RISCV32
  ```
 
- ```
+ ```shell
  #close .bashrc 
  source ~/.bashrc
  cd path/to/qemu/build
@@ -295,7 +296,7 @@ To streamline this process, we can add 'qemu-riscv32' to the environment variabl
 
 Open the folder where the helloworld file is located and run it directly:
 
- ```
+ ```shell
  qemu-riscv32 helloworld
  ```
 
@@ -303,7 +304,7 @@ Open the folder where the helloworld file is located and run it directly:
 
 if it messages **"bash: ./helloworld: cannot execute binary file: Exec format error"** ,try 
 
- ```
+ ```shell
  sudo dpkg --add-architecture i386
  sudo apt-get update
  sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
