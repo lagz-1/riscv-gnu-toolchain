@@ -37,11 +37,14 @@ export PATH=$PATH:$RISCV/bin
   close ~/.bashrc , and input `source ~/.bashrc` in the terminal to apply your settings.
 
 - Then create a folder named 'build',
+
   ```shell
   mkdir build
   cd build
   ```
+  
   and begin to configure:
+  
   ```shell
   ../configure --prefix=$RISCV --with-arch=rv32gc --with-abi=ilp32d
   ```
