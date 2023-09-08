@@ -10,9 +10,8 @@
 
   Download link:[https://mega.nz/file/Y70EmJLJ#Qq0Lgt6C8aRuMzT6vTEUXDVOwhI7SbPMOhJ2M-YlVyM](https://mega.nz/file/Y70EmJLJ#Qq0Lgt6C8aRuMzT6vTEUXDVOwhI7SbPMOhJ2M-YlVyM)
 
-  The images after downloading and extracting are as follows.
+  The images after downloading and extracting is as follows.
 	![](https://res.cloudinary.com/dogmynjzd/image/upload/v1694146186/Screenshot_from_2023-09-08_11-16-42_f8dbqd.png)
-  
-
 
 ## 2. Configure Environment
+  
