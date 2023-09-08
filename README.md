@@ -13,7 +13,11 @@
   The images after downloading and extracting is as follows.
 	![](https://res.cloudinary.com/dogmynjzd/image/upload/v1694146186/Screenshot_from_2023-09-08_11-16-42_f8dbqd.png)
 
-  Use the command `riscv32-unknown-elf-gcc -v` to check your gcc compiler tool's version
+  Use the command 
+  ```shell
+  riscv32-unknown-elf-gcc -v
+```
+  to check your gcc compiler tool's version
   ![](https://res.cloudinary.com/dogmynjzd/image/upload/v1694146186/Screenshot_from_2023-09-07_19-57-43_fwetqr.png)
 
 ## 2. Configure Environment
