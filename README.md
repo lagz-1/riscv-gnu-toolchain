@@ -109,7 +109,8 @@ If there is no output from the command line, download both software.Otherwise, t
 
 [  
 re2c:[https://github.com/skvadrik/re2c/releases](https://github.com/skvadrik/re2c/releases)  
-Ps:If you choose to install ninja([https://github.com/ninja-build/ninja/releases](https://github.com/ninja-build/ninja/releases)) manually, please move the executable file of ninja to one of the executable file paths of the system so that you can access it globally in the terminal.  Common executable paths include */usr/local/bin* or */usr/bin*. Use the command:  
+ninja:[https://github.com/ninja-build/ninja/releases](https://github.com/ninja-build/ninja/releases)  
+Ps:If you choose to install ninja manually, please move the executable file of ninja to one of the executable file paths of the system so that you can access it globally in the terminal.  Common executable paths include */usr/local/bin* or */usr/bin*. Use the command:  
 
  ```
  sudo mv ninja /usr/local/bin/  
