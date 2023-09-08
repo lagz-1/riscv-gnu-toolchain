@@ -185,7 +185,7 @@ Search:
 
 This will search the system for the glib-2.0.pc file and list its path. Once you find the path to the glib-2.0.pc file, you can add it to the PKG_CONFIG_PATH environment variable. Assuming that the found path is /path/to/glib-2.0-pc, use the following command to add it to the environment variable:  
 
- ```vim
+ ```shell
  vim ~/.bashrc
  #add this line  
  export PKG_CONFIG_PATH=/path/to/glib-2.0-pc:$PKG_CONFIG_PATH     
@@ -237,7 +237,7 @@ A:This problem is divided into two situations.
 
 After the configuration is complete,Use these commands:  
 
- ```
+ ```shell
  make -j4   #and wait  
  sudo make install  
 ```
@@ -280,7 +280,7 @@ Then ue the command:
 
 To streamline this process, we can add 'qemu-riscv32' to the environment variables, eliminating the need to navigate to the 'qemu-riscv32' path and enabling us to run 'qemu-riscv32' directly from the terminal:
 
- ```vim
+ ```shell
  vim ~/.bashrc
  #add these lines,the file 'qemu-riscv32' is in the folder './qemu/build'
  export RISCV32= "path/to/the/file/qemu-riscv32"	
