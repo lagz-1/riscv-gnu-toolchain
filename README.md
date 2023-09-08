@@ -57,7 +57,7 @@ close ~/.bashrc , and input `source ~/.bashrc` in the terminal to apply your set
 - Then use command:
   ```shell
   make -j4
- ``` 
+  ``` 
   you also should be patient
 
   If you have made successfully, you will see messages like 'make[2]', 'make[1]', etc., as shown in the image 
@@ -66,7 +66,7 @@ close ~/.bashrc , and input `source ~/.bashrc` in the terminal to apply your set
  - Then use command:
    ```shell
    make install
- ```
+   ```
 
   
   
