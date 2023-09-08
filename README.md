@@ -23,21 +23,23 @@
 ## 2. Configure Environment
 
 - Open Terminal and Install Dependencies:
+  
   ```shell
   sudo apt-get install autoconf automake autotools-dev curl libmpc-dev libmpfr-dev libgmp-dev \ gawk build-essential bison flex texinfo gperf libtool patchutils bc zlib1g-dev libexpat-dev
   ```
 
 - add environment variables: `vim ~/.bashrc`
-  Then add these lines:
-
+  Then add these lines:  
+  
   ```vim
 export RISCV="/path/to/your/riscv-gnu-toolchain unzip folder"
 export PATH=$PATH:$RISCV/bin
   ```
+
   close ~/.bashrc , and input `source ~/.bashrc` in the terminal to apply your settings.
 
-- Then create a folder named 'build',
-
+- Then create a folder named 'build',  
+  
   ```shell
   mkdir build
   cd build
