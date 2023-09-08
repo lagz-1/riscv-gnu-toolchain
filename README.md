@@ -14,6 +14,26 @@
 	![](https://res.cloudinary.com/dogmynjzd/image/upload/v1694146186/Screenshot_from_2023-09-08_11-16-42_f8dbqd.png)
 
 ## 2. Configure Environment
-  `sudo apt-get install autoconf automake autotools-dev curl libmpc-dev libmpfr-dev libgmp-dev \
-gawk build-essential bison flex texinfo gperf libtool patchutils bc zlib1g-dev libexpat-dev·`
 
+- Open Terminal and Install Dependencies:
+  `sudo apt-get install autoconf automake autotools-dev curl libmpc-dev libmpfr-dev libgmp-dev \
+gawk build-essential bison flex texinfo gperf libtool patchutils bc zlib1g-dev libexpat-dev`
+
+- add environment variables: `vim ~/.bashrc`
+  Then add these lines:
+	  *export RISCV="/path/to/your/riscv-gnu-toolchain unzip folder" 
+	   export PATH=$PATH:$RISCV/bin*
+  close ~/.bashrc , and input `source ~/.bashrc` in the terminal to apply your settings.
+
+- Then create a folder named 'build',
+  `mkdir build`
+  `cd build`
+  and begin to configure: `../configure --prefix=$RISCV --with-arch=rv32gc --with-abi=ilp32d`
+
+  at this step, you would wait for a long time, be patient
+  If you have configured successfully, you will see messages like 'make[2]', 'make[1]', etc., as shown in the image 
+  ![](https://res.cloudinary.com/dogmynjzd/image/upload/v1694146186/Screenshot_from_2023-09-07_19-59-57_on9g7y.png)
+  
+  
+  
+  
