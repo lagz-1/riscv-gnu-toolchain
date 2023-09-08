@@ -46,16 +46,27 @@ close ~/.bashrc , and input `source ~/.bashrc` in the terminal to apply your set
   cd build
   ```
 
-  and begin to configure:
+- begin to configure:
   
   ```shell
   ../configure --prefix=$RISCV --with-arch=rv32gc --with-abi=ilp32d
   ```
   
-  at this step, you would wait for a long time, be patient
-  If you have configured successfully, you will see messages like 'make[2]', 'make[1]', etc., as shown in the image 
+  at this step, you would wait for a long time, be patient  
+
+- Then use command:
+  ```shell
+  make -j4      
+ ``` 
+  you also should be patient
+
+  If you have made successfully, you will see messages like 'make[2]', 'make[1]', etc., as shown in the image 
   ![](https://res.cloudinary.com/dogmynjzd/image/upload/v1694146186/Screenshot_from_2023-09-07_19-59-57_on9g7y.png)
   
-  
+ - Then use command:
+   ```shell
+   make install
+```
+
   
   
