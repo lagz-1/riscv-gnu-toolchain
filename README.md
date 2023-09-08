@@ -94,18 +94,18 @@ close ~/.bashrc , and input `source ~/.bashrc` in the terminal to apply your set
 - Check your Dependencies' version
  use command:
 
- ```
- re2c --version
- ninja --version
- ```
+  ```
+  re2c --version
+  ninja --version
+  ```
 
 to check the version of the above software
 
 If there is no output from the command line, download both software.Otherwise, the following error message is displayed:
 
- ```
- ERROR: Cannot find Ninja
- ```  
+  ```
+  ERROR: Cannot find Ninja
+  ```  
 
 [
 Ps:If you choose to install ninja manually, please move the executable file of ninja to one of the executable file paths of the system so that you can access it globally in the terminal.  Common executable paths include */usr/local/bin* or */usr/bin*. Use the command:
