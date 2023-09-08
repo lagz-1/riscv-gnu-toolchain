@@ -13,16 +13,21 @@
   The images after downloading and extracting is as follows.
 	![](https://res.cloudinary.com/dogmynjzd/image/upload/v1694146186/Screenshot_from_2023-09-08_11-16-42_f8dbqd.png)
 
+  Use the command `riscv32-unknown-elf-gcc -v` to check your gcc compiler tool's version
+  ![](https://res.cloudinary.com/dogmynjzd/image/upload/v1694146186/Screenshot_from_2023-09-07_19-57-43_fwetqr.png)
+
 ## 2. Configure Environment
 
 - Open Terminal and Install Dependencies:
+  
   `sudo apt-get install autoconf automake autotools-dev curl libmpc-dev libmpfr-dev libgmp-dev \
 gawk build-essential bison flex texinfo gperf libtool patchutils bc zlib1g-dev libexpat-dev`
 
 - add environment variables: `vim ~/.bashrc`
   Then add these lines:
-	  *export RISCV="/path/to/your/riscv-gnu-toolchain unzip folder" 
-	   export PATH=$PATH:$RISCV/bin*
+	  *export RISCV="/path/to/your/riscv-gnu-toolchain unzip folder"*
+
+  	   *export PATH=$PATH:$RISCV/bin*
   close ~/.bashrc , and input `source ~/.bashrc` in the terminal to apply your settings.
 
 - Then create a folder named 'build',
