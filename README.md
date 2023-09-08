@@ -85,7 +85,7 @@ close ~/.bashrc , and input `source ~/.bashrc` in the terminal to apply your set
 - Download Dependencies
 
   ```shell
-   sudo apt-get install libglib2.0-dev ninja-build  build-essential zlib1g-dev pkg-config libglib2.0-dev  \ binutils-dev libboost-all-dev autoconf libtool libssl-dev  libpixman-1-dev libpython-dev  \ virtualenv libmount-dev   libpixman-1-dev   
+  sudo apt-get install libglib2.0-dev ninja-build  build-essential zlib1g-dev pkg-config libglib2.0-dev  \ binutils-dev libboost-all-dev autoconf libtool libssl-dev  libpixman-1-dev libpython-dev  \ virtualenv libmount-dev   libpixman-1-dev   
   cd ./qemu  
   mkdir build  
   cd build  
@@ -97,8 +97,49 @@ close ~/.bashrc , and input `source ~/.bashrc` in the terminal to apply your set
  ```
  re2c --version
  ninja --version
+ ```
 
- Q:**ERROR: pkg-config binary 'pkg-config' not found**
+to check the version of the above software
+
+If there is no output from the command line, download both software.Otherwise, the following error message is displayed:
+
+ ```
+ ERROR: Cannot find Ninja
+ ```  
+
+[
+Ps:If you choose to install ninja manually, please move the executable file of ninja to one of the executable file paths of the system so that you can access it globally in the terminal.  Common executable paths include */usr/local/bin* or */usr/bin*. Use the command:
+
+ ```
+ sudo mv ninja /usr/local/bin/ 
+ ```
+
+or
+
+ ```
+ sudo mv ninja /usr/bin/ 
+ ```
+
+then
+
+ ```
+ ninja --version
+ ```
+]
+
+- Begin to configure
+Use this command:
+
+ ```
+ ../configure
+ ```
+
+then waiiiiiiiiiiiiiiiiiiiiting...
+***
+
+You may encounter many problems during the process,I list some i encountered below:
+[
+ Q:**ERROR: pkg-config binary 'pkg-config' not found**  
  A:This error message indicates that a binary file called PGg-config, which is commonly used to find and get information about dependent libraries when configuring and building software, is not found on your system. To solve this problem, you can install pkg-config by following one of the following steps:
 
   ```
@@ -113,20 +154,28 @@ or you can install it manually:
 
  ```
  wget https://pkg-config.freedesktop.org/releases/pkg-config-0.29.2.tar.gz  
- cd ./pkg-config-0.29.2
+ #into the folder
+ cd pkg-config-0.29.2
+ #use these commands
  ./configure
  make
  make check
+ #if failed to run, change into 'sudo make install'
  make install
-```
+ ```
+ 
+finally,use this command to check your the pkg-config's version  
+
+ ```
+ pkg-config --version
+ ```
 
 
+Q:**No package 'glib-2.0' found**  
+A:This may be because pkg-config cannot find the file 'glib-2.0.pc' , which contains information about glib-2.0.  
+Try adding the directory path containing the glib-2.0.pc file to the PKG_CONFIG_PATH environment variable. This tells pkg-config to look for .pc file in the specified directory.  
 
-Q:**No package 'glib-2.0' found**
-A:This may be because pkg-config cannot find the file 'glib-2.0.pc' , which contains information about glib-2.0.
-Try adding the directory path containing the glib-2.0.pc file to the PKG_CONFIG_PATH environment variable. This tells pkg-config to look for .pc file in the specified directory.
-
-Search:
+Search:  
 
  ```
   sudo find / -name "glib-2.0.pc" 2>/dev/null  
@@ -146,15 +195,15 @@ Then, run the pkg-config command again:
  pkg-config --modversion glib-2.0  
  ```
 
-Q:**error: Either a previously installed pkg-config or "glib-2.0 >= 2.16" could not be found. Please set GLIB_CFLAGS and GLIB_LIBS to the correct values or pass --with-internal-glib to configure to use the bundled copy.**
-A:This error message indicates that the. /configure script cannot find the required dependencies when configuring the software, especially pkg-config and glib-2.0.
- You can use this command to download:
+Q:**error: Either a previously installed pkg-config or "glib-2.0 >= 2.16" could not be found. Please set GLIB_CFLAGS and GLIB_LIBS to the correct values or pass --with-internal-glib to configure to use the bundled copy.**   
+A:This error message indicates that the. /configure script cannot find the required dependencies when configuring the software, especially pkg-config and glib-2.0.  
+ You can use this command to download:  
 
   ```
  sudo apt-get install pkg-config libglib2.0-dev
  ```
 
-or you can change the command `./configure` into 
+or you can change the command `./configure` into  
 
  ```
  ./configure --with-internal-glib
@@ -163,8 +212,8 @@ or you can change the command `./configure` into
 Q:**ERROR: glib-2.56 gthread-2.0 is required to compile QEMU**
 A:This problem is divided into two situations.  
 
-- Your versions of GLib and GThread are too old
- Use these commands:
+- Your versions of GLib and GThread are too old  
+ Use these commands:  
   
  ```
  pkg-config --modversion glib-2.0
@@ -172,18 +221,78 @@ A:This problem is divided into two situations.
  sudo apt-get install libglib2.0-dev  #If the version is lower than needed, download
  ```
 
-- Clear files downloaded in the folder 'build' when the previous configurator was running
-  When using the. /configure directive, it might download some configuration files.  When an error occurs, the configuration process terminates.  When we troubleshoot the error and configure again, the downloaded files may block the program and report this error.So delete those files in folder 'build'.
+- Clear files downloaded in the folder 'build' when the previous configurator was running  
+  When using the. /configure directive, it might download some configuration files.  When an error occurs, the configuration process terminates.  When we troubleshoot the error and configure again, the downloaded files may block the program and report this error.So delete those files in folder 'build'.  
 
-- Other situation
+- Other situation  
   If you upgrade GLib, but still encounter problems, you may need to update the library path so that the compiler can find the new version of GLib. You can use the following command to update the library cache:
  
  ```
  sudo ldconfig
  ```
+]
+
+After the configuration is complete,Use these commands:
+
+ ```
+ make -j4   #and wait
+ sudo make install
+```
+
+During this process, your disk space may be insufficient, the error is as follows:
+
+ ```
+ /usr/bin/ld: final link failed: No space left on device  
+ collect2: error: ld returned 1 exit status  
+ [5720/9608] Compiling C object libqemu-sparc-softmmu.fa.p/target_sparc_cc_helper.c.o  
+ [5721/9608] Compiling C object libqemu-sparc-softmmu.fa.p/hw_sparc_sun4m.c.o  
+ [5722/9608] Compiling C object libqemu-sparc-softmmu.fa.p/target_sparc_cpu.c.o  
+ ninja: build stopped: subcommand failed.  
+ make: *** [Makefile:162: run-ninja] Error 1  
+ ```
+
+expand your disk or clean up some files
+
+If 'sudo make install' is completed, it means that your qemu installation is successful.
 
 
+## 4.Test
+ Now we can create a C language file to test the effect.  
+ In another location, create a folder for storing your code.  
+ Then, create a 'helloworld.c' file and use the
 
- 
-"Now we can create a C language file to test the effect. In another location, create a folder for storing your code. Then, create a 'helloworld.c' file and use the 'kk' command to compile it.
-  
+ ```
+ riscv32-unknown-elf-gcc helloworld.c -o helloworld
+ ```
+
+ command to compile it.
+
+Then ue the command:
+
+ ```
+ ./qemu-riscv32 helloworld
+ ```
+ to run it.
+![](https://res.cloudinary.com/dogmynjzd/image/upload/v1694146185/Screenshot_from_2023-09-07_23-27-38_swwx5v.png)
+
+To streamline this process, we can add 'qemu-riscv32' to the environment variables, eliminating the need to navigate to the 'qemu-riscv32' path and enabling us to run 'qemu-riscv32' directly from the terminal:
+
+ ```
+ vim ~/.bashrc
+ #add these lines,the file 'qemu-riscv32' is in the folder './qemu/build'
+ export RISCV32= "path/to/the/file/qemu-riscv32"	
+ export PATH=$PATH:$RISCV/bin:$RISCV32
+ #close .bashrc 
+ source ~/.bashrc
+ cd path/to/qemu/build
+ chmod +x qemu-riscv32
+ ```
+
+Open the folder where the helloworld file is located and run it directly:
+
+ ```
+ qemu-riscv32 helloworld
+ ```
+
+![](https://res.cloudinary.com/dogmynjzd/image/upload/v1694146186/Screenshot_from_2023-09-08_00-00-30_qrhkiu.png)
+
