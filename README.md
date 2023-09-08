@@ -163,7 +163,6 @@ or you can install it manually:
  #use these commands  
  ./configure  
  make  
- make check  
  #if failed to run, change into 'sudo make install'  
  make install  
  ```
