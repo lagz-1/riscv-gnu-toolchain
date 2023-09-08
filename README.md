@@ -27,6 +27,8 @@ to update system package list
   to check your gcc compiler tool's version
   ![](https://res.cloudinary.com/dogmynjzd/image/upload/v1694146186/Screenshot_from_2023-09-07_19-57-43_fwetqr.png)
 
+
+
 ## 2. Configure Environment
 
 - Open Terminal and Install Dependencies:
@@ -77,6 +79,7 @@ close ~/.bashrc , and input `source ~/.bashrc` in the terminal to apply your set
    make install
    ```
 
+
 ## 3.Configure QEMU
 
 - Download Dependencies
@@ -94,9 +97,93 @@ close ~/.bashrc , and input `source ~/.bashrc` in the terminal to apply your set
  ```
  re2c --version
  ninja --version
+
+ Q:**ERROR: pkg-config binary 'pkg-config' not found**
+ A:This error message indicates that a binary file called PGg-config, which is commonly used to find and get information about dependent libraries when configuring and building software, is not found on your system. To solve this problem, you can install pkg-config by following one of the following steps:
+
+  ```
+  sudo apt-get install pkg-config
+  ```
+
+or you can install it manually:
+
+ its official website: [https://pkgconfig.freedesktop.org/releases/](https://pkgconfig.freedesktop.org/releases/)
+
+ you can download its newest version:
+
+ ```
+ wget https://pkg-config.freedesktop.org/releases/pkg-config-0.29.2.tar.gz  
+ cd ./pkg-config-0.29.2
+ ./configure
+ make
+ make check
+ make install
+```
+
+
+
+Q:**No package 'glib-2.0' found**
+A:This may be because pkg-config cannot find the file 'glib-2.0.pc' , which contains information about glib-2.0.
+Try adding the directory path containing the glib-2.0.pc file to the PKG_CONFIG_PATH environment variable. This tells pkg-config to look for .pc file in the specified directory.
+
+Search:
+
+ ```
+  sudo find / -name "glib-2.0.pc" 2>/dev/null  
+ ```
+
+This will search the system for the glib-2.0.pc file and list its path. Once you find the path to the glib-2.0.pc file, you can add it to the PKG_CONFIG_PATH environment variable. Assuming that the found path is /path/to/glib-2.0-pc, use the following command to add it to the environment variable:
+
+ ```
+ vim ~/.bashrc  
+ export PKG_CONFIG_PATH=/path/to/glib-2.0-pc:$PKG_CONFIG_PATH #add this line  
+ source ~/.bashrc  
+ ```
+
+Then, run the pkg-config command again:
+
+ ```
+ pkg-config --modversion glib-2.0  
+ ```
+
+Q:**error: Either a previously installed pkg-config or "glib-2.0 >= 2.16" could not be found. Please set GLIB_CFLAGS and GLIB_LIBS to the correct values or pass --with-internal-glib to configure to use the bundled copy.**
+A:This error message indicates that the. /configure script cannot find the required dependencies when configuring the software, especially pkg-config and glib-2.0.
+ You can use this command to download:
+
+  ```
+ sudo apt-get install pkg-config libglib2.0-dev
+ ```
+
+or you can change the command `./configure` into 
+
+ ```
+ ./configure --with-internal-glib
+ ```
+
+Q:**ERROR: glib-2.56 gthread-2.0 is required to compile QEMU**
+A:This problem is divided into two situations.  
+
+- Your versions of GLib and GThread are too old
+ Use these commands:
+  
+ ```
+ pkg-config --modversion glib-2.0
+ pkg-config --modversion gthread-2.0  #Use this command to check the version  
+ sudo apt-get install libglib2.0-dev  #If the version is lower than needed, download
+ ```
+
+- Clear files downloaded in the folder 'build' when the previous configurator was running
+  When using the. /configure directive, it might download some configuration files.  When an error occurs, the configuration process terminates.  When we troubleshoot the error and configure again, the downloaded files may block the program and report this error.So delete those files in folder 'build'.
+
+- Other situation
+  If you upgrade GLib, but still encounter problems, you may need to update the library path so that the compiler can find the new version of GLib. You can use the following command to update the library cache:
  
+ ```
+ sudo ldconfig
+ ```
 
 
 
+ 
 "Now we can create a C language file to test the effect. In another location, create a folder for storing your code. Then, create a 'helloworld.c' file and use the 'kk' command to compile it.
   
