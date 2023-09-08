@@ -154,7 +154,7 @@ or you can install it manually:
 
  you can download its newest version:  
 
- ```
+ ```shell
  wget https://pkg-config.freedesktop.org/releases/pkg-config-0.29.2.tar.gz  
  #into the folder  
  cd pkg-config-0.29.2  
@@ -168,7 +168,7 @@ or you can install it manually:
  
 finally,use this command to check your the pkg-config's version  
 
- ```
+ ```shell
  pkg-config --version  
  ```
 
@@ -179,13 +179,13 @@ Try adding the directory path containing the glib-2.0.pc file to the PKG_CONFIG_
 
 Search:  
 
- ```
+ ```shell
   sudo find / -name "glib-2.0.pc" 2>/dev/null  
  ```
 
 This will search the system for the glib-2.0.pc file and list its path. Once you find the path to the glib-2.0.pc file, you can add it to the PKG_CONFIG_PATH environment variable. Assuming that the found path is /path/to/glib-2.0-pc, use the following command to add it to the environment variable:  
 
- ```
+ ```vim
  vim ~/.bashrc  
  export PKG_CONFIG_PATH=/path/to/glib-2.0-pc:$PKG_CONFIG_PATH #add this line  
  source ~/.bashrc  
@@ -193,7 +193,7 @@ This will search the system for the glib-2.0.pc file and list its path. Once you
 
 Then, run the pkg-config command again:  
 
- ```
+ ```shell
  pkg-config --modversion glib-2.0  
  ```
 
@@ -201,7 +201,7 @@ Q:**error: Either a previously installed pkg-config or "glib-2.0 >= 2.16" could 
 A:This error message indicates that the. /configure script cannot find the required dependencies when configuring the software, especially pkg-config and glib-2.0.  
  You can use this command to download:  
 
-  ```
+  ```shell
  sudo apt-get install pkg-config libglib2.0-dev  
  ```
 
@@ -217,7 +217,7 @@ A:This problem is divided into two situations.
 - Your versions of GLib and GThread are too old  
  Use these commands:  
   
- ```
+ ```shell
  pkg-config --modversion glib-2.0  
  pkg-config --modversion gthread-2.0  #Use this command to check the version  
  sudo apt-get install libglib2.0-dev  #If the version is lower than needed, download  
@@ -243,7 +243,7 @@ After the configuration is complete,Use these commands:
 
 During this process, your disk space may be insufficient, the error is as follows:  
 
- ```
+ ```shell
  /usr/bin/ld: final link failed: No space left on device  
  collect2: error: ld returned 1 exit status  
  [5720/9608] Compiling C object libqemu-sparc-softmmu.fa.p/target_sparc_cc_helper.c.o  
@@ -279,11 +279,14 @@ Then ue the command:
 
 To streamline this process, we can add 'qemu-riscv32' to the environment variables, eliminating the need to navigate to the 'qemu-riscv32' path and enabling us to run 'qemu-riscv32' directly from the terminal:
 
- ```
+ ```vim
  vim ~/.bashrc
  #add these lines,the file 'qemu-riscv32' is in the folder './qemu/build'
  export RISCV32= "path/to/the/file/qemu-riscv32"	
  export PATH=$PATH:$RISCV/bin:$RISCV32
+ ```
+
+ ```
  #close .bashrc 
  source ~/.bashrc
  cd path/to/qemu/build
