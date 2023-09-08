@@ -108,9 +108,11 @@ If there is no output from the command line, download both software.Otherwise, t
   ```  
 
 [  
+Ps:  
 re2c:[https://github.com/skvadrik/re2c/releases](https://github.com/skvadrik/re2c/releases)  
 ninja:[https://github.com/ninja-build/ninja/releases](https://github.com/ninja-build/ninja/releases)  
-Ps:If you choose to install ninja manually, please move the executable file of ninja to one of the executable file paths of the system so that you can access it globally in the terminal.  Common executable paths include */usr/local/bin* or */usr/bin*. Use the command:  
+
+If you choose to install ninja manually, please move the executable file of ninja to one of the executable file paths of the system so that you can access it globally in the terminal.  Common executable paths include */usr/local/bin* or */usr/bin*. Use the command:  
 
  ```
  sudo mv ninja /usr/local/bin/  
@@ -142,7 +144,7 @@ then waiiiiiiiiiiiiiiiiiiiiting...
 You may encounter many problems during the process,I list some i encountered below:  
 [  
  Q:**ERROR: pkg-config binary 'pkg-config' not found**  
- A:This error message indicates that a binary file called PGg-config, which is commonly used to find and get information about dependent libraries when configuring and building software, is not found on your system. To solve this problem, you can install pkg-config by following one of the following steps:  
+ A:This error message indicates that a binary file called pkg-config, which is commonly used to find and get information about dependent libraries when configuring and building software, is not found on your system. To solve this problem, you can install pkg-config by following one of the following steps:  
 
   ```
   sudo apt-get install pkg-config  
