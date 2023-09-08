@@ -76,11 +76,11 @@ close ~/.bashrc , and input `source ~/.bashrc` in the terminal to apply your set
 
   ```shell
    sudo apt-get install libglib2.0-dev ninja-build  build-essential zlib1g-dev pkg-config libglib2.0-dev  \
-binutils-dev libboost-all-dev autoconf libtool libssl-dev  libpixman-1-dev libpython-dev  \
+ binutils-dev libboost-all-dev autoconf libtool libssl-dev  libpixman-1-dev libpython-dev  \
  virtualenv libmount-dev   libpixman-1-dev 
  ```
 
-```
+```shell
  cd ./qemu  
  mkdir build  
  cd build  
