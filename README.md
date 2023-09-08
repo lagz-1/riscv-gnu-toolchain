@@ -24,8 +24,7 @@
 
 - Open Terminal and Install Dependencies:
   ```shell
-  sudo apt-get install autoconf automake autotools-dev curl libmpc-dev libmpfr-dev libgmp-dev \
-gawk build-essential bison flex texinfo gperf libtool patchutils bc zlib1g-dev libexpat-dev`
+  sudo apt-get install autoconf automake autotools-dev curl libmpc-dev libmpfr-dev libgmp-dev \ gawk build-essential bison flex texinfo gperf libtool patchutils bc zlib1g-dev libexpat-dev
 ```
 
 - add environment variables: `vim ~/.bashrc`
